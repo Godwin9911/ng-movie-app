@@ -1,0 +1,139 @@
+<div class="mt-5">
+  <div class="col-md-4 m-auto">
+    <div class="card card-body">
+      <h1 class="text-center mb-3"><i class="fa fa-user-plus"></i>Register</h1>
+      <span class="alert alert-danger" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </span>
+      <form novalidate (ngSubmit)="save()" [formGroup]="registerForm">
+        <div class="form-group">
+          <label for="firstnameId">First Name</label>
+          <input
+            type="text"
+            id="firstnameId"
+            class="form-control"
+            placeholder="Enter First Name"
+            formControlName="firstname"
+            [ngClass]="{
+              'is-invalid':
+                (registerForm.get('firstname').touched ||
+                  registerForm.get('firstname').dirty) &&
+                !registerForm.get('firstname').valid
+            }"
+          />
+          <span class="invalid-feedback">
+            <span *ngIf="registerForm.get('firstname').errors?.required">
+              Please enter your first name.
+            </span>
+            <span *ngIf="registerForm.get('firstname').errors?.minlength">
+              The first name must be longer than 3 characters.
+            </span>
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label for="lastnameId">Last Name</label>
+          <input
+            type="text"
+            id="lastnameId"
+            class="form-control"
+            placeholder="Enter Last Name"
+            formControlName="lastname"
+            [ngClass]="{
+              'is-invalid':
+                (registerForm.get('lastname').touched ||
+                  registerForm.get('lastname').dirty) &&
+                !registerForm.get('lastname').valid
+            }"
+          />
+          <span class="invalid-feedback">
+            <span *ngIf="registerForm.get('lastname').errors?.required">
+              Please enter your last name.
+            </span>
+            <span *ngIf="registerForm.get('lastname').errors?.minlength">
+              The first name must be longer than 3 characters.
+            </span>
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label for="emailId">Email</label>
+          <input
+            type="text"
+            id="emailId"
+            class="form-control"
+            placeholder="Enter Email"
+            formControlName="email"
+            [ngClass]="{
+              'is-invalid':
+                (registerForm.get('email').touched ||
+                  registerForm.get('email').dirty) &&
+                !registerForm.get('email').valid
+            }"
+          />
+          <span class="invalid-feedback" *ngIf="!registerForm.get('email').valid">
+            Please Enter a valid Email
+          </span>
+        </div>
+
+        <div formGroupName="passwordGroup">
+          <div class="form-group">
+            <label for="passwordId">Password</label>
+            <input
+              type="password"
+              id="passwordId"
+              class="form-control"
+              placeholder="Enter Password"
+              formControlName="password"
+              [ngClass]="{
+                'is-invalid':
+                  registerForm.get('passwordGroup').errors ||
+                  ((registerForm.get('passwordGroup.password').touched ||
+                    registerForm.get('passwordGroup.password').dirty) &&
+                  !registerForm.get('passwordGroup.password').valid)
+              }"
+            />
+            <span class="invalid-feedback">
+              <span *ngIf="registerForm.get('passwordGroup.password').errors?.required">
+                  please Enter your password
+              </span>
+            </span>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPasswordId">Comfirm password</label>
+            <input
+              type="password"
+              id="confirmPasswordId"
+              class="form-control"
+              placeholder="Confirm Password"
+              formControlName="confirmPassword"
+              [ngClass]="{
+                'is-invalid':
+                  registerForm.get('passwordGroup').errors ||
+                  ((registerForm.get('passwordGroup.confirmPassword').touched ||
+                    registerForm.get('passwordGroup.confirmPassword').dirty) &&
+                  !registerForm.get('passwordGroup.confirmPassword').valid)
+              }"
+            />
+            <span class="invalid-feedback">
+              <span *ngIf="registerForm.get('passwordGroup.confirmPassword').errors?.required">
+                  Please confirm your password.
+              </span>
+              <span *ngIf="registerForm.get('passwordGroup').errors?.match">
+                  password does not match
+              </span>
+            </span>
+          </div>
+        </div>
+
+        <button type="submit"
+                class="btn btn-primary btn-block"
+                [disabled]="!registerForm.valid"
+                >Submit
+        </button>
+      </form>
+      <p class="lead mt-4">Have an Acccount? <a [routerLink]="['/login']">Login</a></p>
+    </div>
+  </div>
+</div>

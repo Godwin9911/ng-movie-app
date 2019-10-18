@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootswatch/dist/superhero/bootstrap.min.css";
+@import "~font-awesome/css/font-awesome.min.css";
+@import '~ngx-toastr/toastr';
+
+h2, h3 {
+  color: var(--primary);
+}
+img {
+  border: 2px solid #EBEBEB;
+}
+
+#detail-img {
+  border: none;
+}
+
+.btn-fav{
+  position: absolute;
+  bottom: 0;
+  right: 1rem;
+  font-size: 1.2rem;
+}

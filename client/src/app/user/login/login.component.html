@@ -1,0 +1,55 @@
+<div class="mt-5">
+  <div class="col-md-4 m-auto">
+    <div class="card card-body">
+      <h1 class="text-center mb-3"><i class="fa fa-sign-in"></i> Login</h1>
+      <span class="alert alert-danger" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </span>
+      <form #form="ngForm" (ngSubmit)="login(form)">
+        <div class="form-group">
+          <label for="emailId" class="d-none">Email</label>
+          <input
+            type="email"
+            id="emailId"
+            name="email"
+            class="form-control"
+            placeholder="Enter Email"
+            [(ngModel)]="email"
+            email
+            required
+            #emailField="ngModel"
+            [ngClass]="{'is-invalid' : form.submitted && emailField.invalid}"
+          />
+          <span class="invalid-feedback" *ngIf="form.submitted && emailField.invalid">
+            Please Enter a valid Email
+          </span>
+        </div>
+        <div class="form-group">
+          <label for="password" class="d-none">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-control"
+            placeholder="Enter Password"
+            [(ngModel)]="password"
+            required
+            #passwordField="ngModel"
+            [ngClass]="{'is-invalid' : form.submitted && passwordField.invalid}"
+          />
+          <span class="invalid-feedback" *ngIf="form.submitted && passwordField.invalid">
+            Please Enter your password
+          </span>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
+      </form>
+      <p class="lead mt-4">
+        Don't have an Acccount? <a [routerLink]="['/register']">Register</a>
+      </p>
+      <p class="text-secondary small">
+        This is for testing purposes, your information will not be shared with
+        anyone
+      </p>
+    </div>
+  </div>
+</div>

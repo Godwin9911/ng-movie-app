@@ -1,0 +1,24 @@
+<div class="container mt-4">
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link"
+      [routerLink]="['upcoming']"
+      routerLinkActive='active'>Upcoming</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link"
+      [routerLink]="['nowplaying']"
+      routerLinkActive='active'>Now Playing</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link"
+      [routerLink]="['toprated']"
+      routerLinkActive='active'>Top <i class="fa fa-star"></i></a>
+    </li>
+  </ul>
+
+  <div class="mt-2">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+

@@ -1,0 +1,26 @@
+<div class="container">
+    <h2>Favourites</h2>
+    <p>Manage Your favourite movies</p>
+    <div class="row pt-2">
+      <div class="col-lg-4 col-md-6 movie-div" *ngFor="let movie of movies">
+        <div class="card text-white bg-secondary mb-3" (click)="movieDetail(movie.id)">
+            <div class="row">
+                <div class="col-4 pr-0">
+                  <img class="img img-fluid" [src]="movie.poster_path | formatImg" >
+                </div>
+                <div class="col-8 p-0">
+                  <div class="card-body">
+                      <h5 class="card-title">{{ movie.title }}</h5>
+                      <h6 class="card-subtitle mb-2 text-muted"><i class="fa fa-calendar mr-1"></i> {{ movie.release_date }}</h6>
+                      <app-rating [rating]="movie.vote_average | formatRating"></app-rating><span class="ml-2" style="color: #EDA800">{{ movie.vote_average }}/10</span>
+                      <div>
+                        <button class="btn btn-outline-danger border border-secondary btn-fav" (click)="removeFromFavourites(movie.id)"><i class="fa fa-trash"></i></button>
+                      </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+      </div>
+    </div>
+</div>
+
