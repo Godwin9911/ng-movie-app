@@ -43,9 +43,9 @@ app.use(bodyParser.json());
 app.use('/api/movies', movieRouter);
 
 
-app.get('/', (req, res) => {
+/* app.get('/', (req, res) => {
   res.send('Welcome to my API');
-});
+}); */
 
 // serve static assets in prod
 if (process.env.NODE_ENV === 'production') {
