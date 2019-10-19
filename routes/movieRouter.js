@@ -63,7 +63,7 @@ movieRouter.route('/search')
 movieRouter.route('/getmovie/:movieId')
   .get((req, res) => {
     // const movieId = parseInt(req.params.movieId);
-    axios.get('https://api.themoviedb.org/3/movie/453405?api_key=f012aabf5cd1c2b382fa1b3e3bbce93c&language=en-US')
+    axios.get(`https://api.themoviedb.org/3/movie/453405?api_key=${process.env.TMDB_API_KEY}&language=en-US`)
       .then((response) => {
         const data = response;
         return res.status(200).json(data);
