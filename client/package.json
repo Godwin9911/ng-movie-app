@@ -1,5 +1,5 @@
 {
-  "name": "ng-forum",
+  "name": "ng-movie-app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -11,6 +11,9 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-devkit/build-angular": "~0.803.3",
+    "@angular/cli": "~8.3.3",
+    "@angular/compiler-cli": "~8.2.4",
     "@angular/animations": "^8.2.11",
     "@angular/common": "~8.2.4",
     "@angular/compiler": "~8.2.4",

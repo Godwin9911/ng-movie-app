@@ -22,6 +22,7 @@ export class FavouritesComponent implements OnInit {
               private toastr: ToastrService) { }
 
   ngOnInit() {
+    console.log(this.movies);
     // get favourites from backend
     /* this.movieService.getFavourites()
       .then(data => {
@@ -37,7 +38,7 @@ export class FavouritesComponent implements OnInit {
 
   removeFromFavourites(movieId) {
     if (this.favouritesService.removeFromFavourites(movieId)) {
-      return this.toastr.success('Removed Movie from favourites');
+      return this.toastr.success('Movie Removed from favourites');
     }
   }
 

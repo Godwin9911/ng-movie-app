@@ -1,0 +1,62 @@
+<div class="container mt-4">
+  <h2 class="text-center">Search</h2>
+  <p class="text-center">Search for your favourite movies</p>
+  <form #form="ngForm" (ngSubmit)="search(form)" class="col-md-6 mx-auto">
+    <div class="form-group row">
+      <label class="d-none col-form-label" for="searchStringId">domain</label>
+      <div class="col-10 p-0 mt-2">
+        <input class="form-control form-control-lg" id="searchStringId" name="searchString" [(ngModel)]="searchString"
+          placeholder="(eg) Avengers " type="text" (keyup)="search(form)" required />
+      </div>
+      <div class="col-2 p-0 mt-2">
+        <button type="submit" class="btn btn-dark btn-lg btn-block">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+  <hr />
+
+  <div class="text-center p-5 m-5" *ngIf="loading">
+    <span class="fa fa-spinner spinner fa-4x"></span>
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-danger col-md-6 mx-auto">
+      {{ errorMessage }}
+  </div>
+
+  <div *ngIf="movies && !loading">
+    <div class="text-center">
+      <h4>
+        {{ movies.length }}
+        <span class="text-primary">Search Results for:</span> {{ searchString }}
+      </h4>
+    </div>
+    <div class="row pt-2">
+      <div class="col-lg-4 col-md-6 movie-div" *ngFor="let movie of movies">
+        <div class="card text-white bg-secondary mb-3">
+          <div class="row">
+            <div class="col-4 pr-0" (click)="movieDetail(movie.id)">
+              <img class="img img-fluid" [src]="movie.poster_path | formatImg" />
+            </div>
+            <div class="col-8 p-0">
+              <div class="card-body">
+                <h5 class="card-title">{{ movie.title | slice: 0:25 }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">
+                  <i class="fa fa-calendar mr-1"></i> {{ movie.release_date }}
+                </h6>
+                <app-rating [rating]="movie.vote_average | formatRating"></app-rating><span class="ml-2"
+                  style="color: #EDA800">{{ movie.vote_average }}/10</span>
+                <div>
+                  <button class="btn btn-secondary btn-fav" (click)="addToFavourites(movie)">
+                    <i class="fa fa-heart"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

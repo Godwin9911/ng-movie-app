@@ -1,7 +1,10 @@
-<div class="container col-md-6 mt-2">
-  <div *ngIf="errorMessage" class="alert alert-danger">
+<div class="text-center p-5 m-5" *ngIf="loading">
+  <span class="fa fa-spinner spinner fa-4x"></span>
+</div>
+<div *ngIf="errorMessage" class="alert alert-danger col-md-6 mx-auto">
     {{ errorMessage }}
-  </div>
+</div>
+<div class="container col-md-6 mt-2" *ngIf="movie">
   <div class="text-center">
     <h2 class="text-primary font-weight-bolder">{{ movie.title }}</h2>
     <p class="text-muted"><small>{{ movie.tagline }}</small></p>
@@ -10,16 +13,20 @@
     <div class="col-7 pr-0">
       <p><span class="text-primary font-weight-bolder">Release Date:</span> {{ movie.release_date }}</p>
       <p><span class="text-primary font-weight-bolder">Language:</span> {{ movie.original_language }}</p>
-      <p><span class="text-primary font-weight-bolder">Runtime:</span>  {{ movie.runtime }}</p>
-      <p><span class="text-primary font-weight-bolder">Reviews:</span>  {{ movie.vote_count }}</p>
-      <p><app-rating [rating]="movie.vote_average | formatRating"></app-rating><span class="ml-2" style="color: #EDA800; font-size: 1.2rem">{{ movie.vote_average }}/10</span></p>
+      <p><span class="text-primary font-weight-bolder">Runtime:</span> {{ movie.runtime }}</p>
+      <p><span class="text-primary font-weight-bolder">Reviews:</span> {{ movie.vote_count }}</p>
+      <p>
+        <app-rating [rating]="movie.vote_average | formatRating"></app-rating><span class="ml-2"
+          style="color: #EDA800; font-size: 1.2rem">{{ movie.vote_average }}/10</span>
+      </p>
       <span *ngFor="let genre of movie.genres">
         <span class="badge badge-pill badge-secondary ml-1">{{genre.name}}</span>
       </span>
-      <p [ngClass]="(movie.status === 'Released') ? 'text-success' : 'text-danger'"><span class="fa fa-circle fa-fw"></span> {{ movie.status }}</p>
+      <p [ngClass]="(movie.status === 'Released') ? 'text-success' : 'text-danger'"><span
+          class="fa fa-circle fa-fw"></span> {{ movie.status }}</p>
     </div>
     <div class="col-5">
-        <img class="img img-fluid" id="poster" [src]="movie.poster_path | formatImg"/>
+      <img class="img img-fluid" id="poster" [src]="movie.poster_path | formatImg" />
     </div>
   </div>
   <hr>
@@ -32,7 +39,7 @@
     <h3>Production Companies</h3>
     <div *ngFor="let company of movie.production_companies">
       <div class="col-3 d-inline">
-        <img class="img img-fluid" id="detail-img" [src]="company.logo_path | formatImg"/>
+        <img class="img img-fluid" id="detail-img" [src]="company.logo_path | formatImg" />
       </div>
     </div>
     <a href="movie.homepage" *ngIf="movie.homepage"><span class="fa fa-globe"></span> {{ movie.homepage }}</a>
@@ -40,6 +47,6 @@
   <hr>
   <div>
     <h3>Images</h3>
-    <img class="img img-fluid w-100" id="detail-img" [src]="movie.backdrop_path | formatImg"/>
+    <img class="img img-fluid w-100" id="detail-img" [src]="movie.backdrop_path | formatImg" />
   </div>
 </div>

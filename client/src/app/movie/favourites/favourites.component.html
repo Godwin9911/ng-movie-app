@@ -1,6 +1,10 @@
 <div class="container">
     <h2>Favourites</h2>
     <p>Manage Your favourite movies</p>
+    <div *ngIf="movies.length === 0">
+      <h3>You have not selected your favourite movies</h3>
+      <p>Select you favoutite movies by tapping the " <i class="fa fa-heart"></i> " icon</p>
+    </div>
     <div class="row pt-2">
       <div class="col-lg-4 col-md-6 movie-div" *ngFor="let movie of movies">
         <div class="card text-white bg-secondary mb-3" (click)="movieDetail(movie.id)">
@@ -10,7 +14,7 @@
                 </div>
                 <div class="col-8 p-0">
                   <div class="card-body">
-                      <h5 class="card-title">{{ movie.title }}</h5>
+                      <h5 class="card-title">{{ movie.title | slice : 0 : 40 }}</h5>
                       <h6 class="card-subtitle mb-2 text-muted"><i class="fa fa-calendar mr-1"></i> {{ movie.release_date }}</h6>
                       <app-rating [rating]="movie.vote_average | formatRating"></app-rating><span class="ml-2" style="color: #EDA800">{{ movie.vote_average }}/10</span>
                       <div>

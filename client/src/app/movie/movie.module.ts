@@ -15,6 +15,8 @@ import { TopratedComponent } from './toprated/toprated.component';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SearchComponent } from './search/search.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,13 +28,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ImgPipe,
     MovieDetailComponent,
     TopratedComponent,
-    FavouritesComponent
+    FavouritesComponent,
+    SearchComponent
   ],
   imports: [
     NgbModule,
     CommonModule,
     MovieRoutingModule,
     HttpClientModule,
+    FormsModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot() // ToastrModule added
   ],

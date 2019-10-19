@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable semi */
 /* eslint-disable no-console */
-const express = require('express');
+/* const express = require('express');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 // const uuid = require('uuid');
@@ -83,3 +83,5 @@ function routes(User) {
 }
 
 module.exports = routes;
+
+*/

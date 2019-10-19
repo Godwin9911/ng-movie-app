@@ -26,7 +26,7 @@ export class LatestComponent implements OnInit {
           // console.log(data);
       })
       .catch(err => {
-        this.errorMessage = err.message;
+        this.errorMessage = `Error retrieving now playing movies Refresh your browser and try again`;
         // console.log(err);
       });
   }
@@ -35,7 +35,7 @@ export class LatestComponent implements OnInit {
     if (this.favouritesService.addToFavourites(movie)) {
       return this.toastr.success('Added to Favourites');
     }
-    return this.toastr.success('Movie already added favourites');
+    return this.toastr.info('Movie already added favourites');
   }
 
   movieDetail(id) {

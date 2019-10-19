@@ -1,6 +1,7 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { AuthService } from './user/auth.service';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -22,12 +23,15 @@ export class AppComponent implements OnInit {
   }
 
   constructor(private authservice: AuthService,
-              private router: Router) {}
+              private router: Router,
+              private titleService: Title) {}
 
   ngOnInit() {
-    this.authservice.checkAuthenticationStatus().subscribe({
-      complete: () => this.router.navigateByUrl('/favourites')
-    });
+    this.titleService.setTitle('Ng-Movie-App');
+
+    /*this.authservice.checkAuthenticationStatus().subscribe({
+      complete: () => this.router.navigateByUrl('/movies')
+    });*/
   }
 
   logOut(): void {

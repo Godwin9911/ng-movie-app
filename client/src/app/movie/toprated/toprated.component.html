@@ -1,4 +1,11 @@
 <h2>Top Rated Movies</h2>
+<button class="btn btn-primary" [routerLink]="['/search']"><i class="fa fa-search" ></i> Search</button>
+<div *ngIf="errorMessage" class="alert alert-danger col-md-6 mx-auto">
+    {{ errorMessage }}
+  </div>
+  <div class="text-center p-5 m-5" *ngIf="!movies && !errorMessage">
+    <span class="fa fa-spinner spinner fa-4x"></span>
+  </div>
 <div class="row pt-2">
   <div class="col-lg-4 col-md-6 movie-div" *ngFor="let movie of movies">
     <div class="card text-white bg-secondary mb-3">

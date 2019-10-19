@@ -22,11 +22,11 @@ export class UpcomingComponent implements OnInit {
     this.movieService.getUpcoming()
       .then(data => {
           this.movies = data;
-          console.log(data);
+          // console.log(data);
       })
       .catch(err => {
-        this.errorMessage = err.message;
-        console.log(err);
+        this.errorMessage = `Error retrieving now playing movies Refresh your browser and try again`;
+        // console.log(err);
       });
   }
 
@@ -34,7 +34,7 @@ export class UpcomingComponent implements OnInit {
     if (this.favouritesService.addToFavourites(movie)) {
       return this.toastr.success('Added to Favourites');
     }
-    return this.toastr.success('Movie already added favourites');
+    return this.toastr.info('Movie already added favourites');
   }
 
   movieDetail(id) {

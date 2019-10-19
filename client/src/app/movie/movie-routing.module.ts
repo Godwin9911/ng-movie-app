@@ -7,6 +7,7 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { TopratedComponent } from './toprated/toprated.component';
 import { MoviedetailResolver } from './moviedetail-resolver.service';
 import { FavouritesComponent } from './favourites/favourites.component';
+import { SearchComponent } from './search/search.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   },
   { path: 'moviedetail/:id', component: MovieDetailComponent, resolve: { moviedetail: MoviedetailResolver}},
   { path: 'favourites', component: FavouritesComponent },
+  { path: 'search', component: SearchComponent },
 ];
 
 @NgModule({

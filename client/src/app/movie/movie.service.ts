@@ -11,7 +11,7 @@ export class MovieService {
 
   getUpcoming(): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http.get(`${this.url}/upcoming.json`)
+      this.http.get(`${this.url}/upcoming`)
         .toPromise()
         .then(
           res => resolve(res),
@@ -22,7 +22,7 @@ export class MovieService {
 
   getmovie(id: string): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http.get(`https://api.themoviedb.org/3/movie/${id}?api_key=f012aabf5cd1c2b382fa1b3e3bbce93c&language=en-US`)
+      this.http.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.TMDB_API_KEY}&language=en-US`)
         .toPromise()
         .then(
           res => resolve(res),
@@ -31,7 +31,7 @@ export class MovieService {
     });
   }
 
-  getFavourites(): Promise<any> {
+  /* getFavourites(): Promise<any> {
     return new Promise((resolve, reject) => {
       this.http.get(`api/users/favourites`)
         .toPromise()
@@ -40,11 +40,11 @@ export class MovieService {
           msg => reject(msg)
         );
     });
-  }
+  } */
 
   nowPlaying(): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http.get(`${this.url}/nowplaying.json`)
+      this.http.get(`${this.url}/nowplaying`)
         .toPromise()
         .then(
           res => resolve(res),
@@ -55,7 +55,18 @@ export class MovieService {
 
   topRated(): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http.get(`${this.url}/upcoming.json`)
+      this.http.get(`${this.url}/toprated`)
+        .toPromise()
+        .then(
+          res => resolve(res),
+          msg => reject(msg)
+        );
+    });
+  }
+
+  search(query: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.http.get(`${this.url}/search?q=${query}`)
         .toPromise()
         .then(
           res => resolve(res),
