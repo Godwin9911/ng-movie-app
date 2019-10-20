@@ -22,7 +22,7 @@ export class MovieService {
 
   getmovie(id: string): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.http.get(`https://api.themoviedb.org/3/movie/${id}?api_key=f012aabf5cd1c2b382fa1b3e3bbce93c&language=en-US`)
+      this.http.get(`https://api.themoviedb.org/3/movie/${id}?api_key=&language=en-US`)
       .toPromise()
         .then(
           res => resolve(res),
